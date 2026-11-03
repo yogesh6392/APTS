@@ -118,7 +118,17 @@ class APTSClient {
 
     try {
       const response = await fetch(endpoint, options);
-      const data = await response.json();
+      const text = await response.text();
+      let data;
+      try {
+        data = JSON.parse(text);
+      } catch (jsonErr) {
+        if (!response.ok) {
+          throw new Error(`Server returned HTTP ${response.status}`);
+        }
+        throw new Error("Invalid response received from server");
+      }
+
       if (!response.ok) {
         throw new Error(data.error || `Request failed with status ${response.status}`);
       }

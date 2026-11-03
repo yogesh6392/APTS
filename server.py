@@ -338,9 +338,34 @@ def init_db():
     if student_count == 0:
         seed_demo_data(cursor)
 
+    # Seed Demo Teacher Accounts if empty
+    cursor.execute("SELECT COUNT(*) as count FROM users WHERE role = 'teacher'")
+    teacher_count = cursor.fetchone()['count']
+    if teacher_count == 0:
+        seed_teacher_data(cursor)
+
     conn.commit()
     conn.close()
     print("[DATABASE] Schema verified and database ready.")
+
+def seed_teacher_data(cursor):
+    now = datetime.datetime.now(datetime.timezone.utc).isoformat()
+    teachers = [
+        ("teacher@univ.edu", "Dr. Priya Sharma", "FAC-2026-001", "Computer Science & Engineering", "Associate Professor", "Machine Learning & Distributed Systems"),
+        ("faculty@univ.edu", "Prof. Arjun Reddy", "FAC-2026-002", "Information Technology", "Assistant Professor", "Computer Architecture & VLSI")
+    ]
+    for email, name, fac_id, dept, desig, spec in teachers:
+        pwd_hash, salt = hash_password("Teacher@2026!")
+        cursor.execute(
+            "INSERT INTO users (email, password_hash, salt, role, is_active, created_at) VALUES (?, ?, ?, 'teacher', 1, ?)",
+            (email, pwd_hash, salt, now)
+        )
+        uid = cursor.lastrowid
+        cursor.execute(
+            """INSERT INTO teacher_profiles (user_id, full_name, faculty_id, department, designation, specialization)
+               VALUES (?, ?, ?, ?, ?, ?)""",
+            (uid, name, fac_id, dept, desig, spec)
+        )
 
 def seed_demo_data(cursor):
     now = datetime.datetime.now(datetime.timezone.utc).isoformat()
@@ -524,6 +549,7 @@ def seed_demo_data(cursor):
 
 class APTSRequestHandler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
+        kwargs.pop('directory', None)
         super().__init__(*args, directory=BASE_DIR, **kwargs)
 
     def send_json(self, data, status_code=200):
@@ -587,11 +613,16 @@ class APTSRequestHandler(http.server.SimpleHTTPRequestHandler):
         return None
 
     def read_json_body(self):
-        content_length = int(self.headers.get('Content-Length', 0))
+        try:
+            cl = self.headers.get('Content-Length') or self.headers.get('content-length') or '0'
+            content_length = int(cl)
+        except (ValueError, TypeError):
+            content_length = 0
+
         if content_length <= 0:
             return {}
-        raw_body = self.rfile.read(content_length).decode('utf-8')
         try:
+            raw_body = self.rfile.read(content_length).decode('utf-8')
             return json.loads(raw_body)
         except Exception:
             return {}
