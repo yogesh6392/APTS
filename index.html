@@ -1,0 +1,2421 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>APTS · Student Project Management &amp; Evaluation Platform</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>" />
+</head>
+<body>
+
+  <!-- ====================================================================== -->
+  <!-- 1. PUBLIC LANDING PAGE VIEW -->
+  <!-- ====================================================================== -->
+  <div id="viewLanding" class="view-screen">
+    <!-- Navbar -->
+    <header class="landing-nav-header">
+      <div class="brand-logo-group" onclick="app.showLanding()">
+        <div class="brand-icon">⚡</div>
+        <div class="brand-text">EduProject &bull; EVALUATION PLATFORM</div>
+      </div>
+
+      <nav class="landing-nav-links">
+        <a href="#viewLanding">Home</a>
+        <a href="#featuresSection">Features</a>
+        <a href="#howItWorksSection">How It Works</a>
+        <a href="#aboutSection">About</a>
+        <a href="#/student/login" onclick="app.openStudentAuthModal('login')">Student Portal</a>
+        <a href="#/teacher/login" onclick="app.openTeacherAuthModal()">Teacher Portal</a>
+        <a href="#/admin/login" onclick="app.openAdminAuthModal()">Admin Portal</a>
+      </nav>
+
+      <div class="landing-nav-actions">
+        <button class="btn btn-quiet" onclick="app.openStudentAuthModal('login')">
+          🎓 Student
+        </button>
+        <button class="btn btn-quiet" onclick="app.openTeacherAuthModal()" style="border-color: rgba(16, 185, 129, 0.4); color: #10B981;">
+          👨‍🏫 Teacher
+        </button>
+        <button class="btn btn-purple" onclick="app.openAdminAuthModal()">
+          🛡️ Admin
+        </button>
+        <button class="btn-icon" onclick="app.toggleTheme()" title="Toggle Dark/Light Theme">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Hero Section with Pure CSS Grid Background -->
+    <section class="hero-wrapper bg-grid-tech">
+      <div class="hero-content">
+        <div class="eyebrow">
+          <span>●</span>
+          ACADEMIC CAPSTONE MANAGEMENT &bull; FACULTY EVALUATION PLATFORM
+        </div>
+
+        <h1>
+          Student Project Management &amp; <span class="gradient-text">Evaluation Platform</span>
+        </h1>
+
+        <p class="hero-description">
+          One intelligent platform to submit academic projects, monitor review progress, receive faculty feedback and track transparent evaluations.
+        </p>
+
+        <!-- Three Prominent CTA Buttons -->
+        <div class="hero-action-buttons" style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+          <button class="btn btn-primary" style="padding: 0.95rem 1.8rem; font-size: 1.05rem;" onclick="app.openStudentAuthModal('login')">
+            <span>🎓</span> Enter Student Portal
+          </button>
+          <button class="btn btn-quiet" style="padding: 0.95rem 1.8rem; font-size: 1.05rem; border-color: rgba(16, 185, 129, 0.5); color: #10B981;" onclick="app.openTeacherAuthModal()">
+            <span>👨‍🏫</span> Enter Teacher Portal
+          </button>
+          <button class="btn btn-purple" style="padding: 0.95rem 1.8rem; font-size: 1.05rem;" onclick="app.openAdminAuthModal()">
+            <span>🛡️</span> Enter Admin Portal
+          </button>
+        </div>
+
+        <!-- High-Fidelity Product Dashboard Preview -->
+        <div class="hero-product-preview">
+          <div class="preview-window-bar">
+            <div class="preview-dots">
+              <span class="preview-dot red"></span>
+              <span class="preview-dot yellow"></span>
+              <span class="preview-dot green"></span>
+            </div>
+            <div class="preview-title">project-portal.univ.edu / candidate-evaluation-suite</div>
+            <div style="font-size: 0.7rem; color: var(--brand-blue); font-weight: 700;">LIVE CONNECTED</div>
+          </div>
+
+          <div class="preview-body">
+            <!-- Mini KPIs -->
+            <div class="preview-kpis">
+              <div class="preview-mini-kpi">
+                <div class="val" style="color: var(--brand-blue);" id="prevActiveCapstones">4</div>
+                <div class="lbl">Active Capstone Records</div>
+              </div>
+              <div class="preview-mini-kpi">
+                <div class="val" style="color: var(--accent-emerald);">100%</div>
+                <div class="lbl">Faculty Verification Rate</div>
+              </div>
+              <div class="preview-mini-kpi">
+                <div class="val" style="color: var(--brand-purple);" id="prevMeanScore">93.8 / 100</div>
+                <div class="lbl">Cohort Mean Viva Grade</div>
+              </div>
+            </div>
+
+            <!-- Live Stage Stepper Preview -->
+            <div class="preview-stepper-row">
+              <div class="preview-step done">
+                <span class="preview-step-icon">✓</span>
+                <span>1. Draft</span>
+              </div>
+              <div style="color: var(--border-light);">&rarr;</div>
+              <div class="preview-step done">
+                <span class="preview-step-icon">✓</span>
+                <span>2. Submitted</span>
+              </div>
+              <div style="color: var(--border-light);">&rarr;</div>
+              <div class="preview-step done">
+                <span class="preview-step-icon">✓</span>
+                <span>3. Under Review</span>
+              </div>
+              <div style="color: var(--border-light);">&rarr;</div>
+              <div class="preview-step done">
+                <span class="preview-step-icon">✓</span>
+                <span>4. Changes Requested</span>
+              </div>
+              <div style="color: var(--border-light);">&rarr;</div>
+              <div class="preview-step done">
+                <span class="preview-step-icon">✓</span>
+                <span>5. Resubmitted (v2)</span>
+              </div>
+              <div style="color: var(--border-light);">&rarr;</div>
+              <div class="preview-step done">
+                <span class="preview-step-icon">✓</span>
+                <span>6. Approved for Viva</span>
+              </div>
+              <div style="color: var(--border-light);">&rarr;</div>
+              <div class="preview-step done" style="color: var(--brand-blue);">
+                <span class="preview-step-icon" style="background: var(--brand-blue); color: var(--bg-app); border-color: var(--brand-blue);">★</span>
+                <span>7. Grade Published</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Ticker Stats Connected to Real DB -->
+        <div class="hero-ticker-strip">
+          <div class="ticker-box">
+            <div class="ticker-val" style="color: var(--brand-blue);" id="heroTotalProjects">4</div>
+            <div class="ticker-label">Distinct Capstones</div>
+          </div>
+          <div class="ticker-box">
+            <div class="ticker-val" style="color: var(--accent-emerald);" id="heroTotalStudents">3</div>
+            <div class="ticker-label">Registered Candidates</div>
+          </div>
+          <div class="ticker-box">
+            <div class="ticker-val" style="color: var(--brand-cyan);">SQLITE3</div>
+            <div class="ticker-label">Persistent Storage</div>
+          </div>
+          <div class="ticker-box">
+            <div class="ticker-val" style="color: var(--brand-purple);" id="heroAvgVivaScore">93.8</div>
+            <div class="ticker-label">Average Project Score</div>
+          </div>
+        </div>
+      </div>
+    </section>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="landing-section" id="howItWorksSection">
+      <div class="section-title-center">
+        <h2>Structured Project Lifecycle</h2>
+        <p>A rigorous phase-gate workflow ensuring student capstones meet academic accreditation standards.</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">01</div>
+          <h3>Project Submission</h3>
+          <p>Submit complete project abstracts, problem statements, measurable objectives, tech stack, and documentation.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">02</div>
+          <h3>Faculty Verification</h3>
+          <p>Assigned faculty evaluators inspect repositories, verify architecture deliverables, and commence official review.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">03</div>
+          <h3>Iterative Revisions</h3>
+          <p>Receive concrete faculty feedback on weaknesses and missing features, with instant revision tracking.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">04</div>
+          <h3>100-Mark Rubric &amp; Grade</h3>
+          <p>Transparent evaluation across 7 academic dimensions with published letter grades and official dossiers.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section (Exact 6 Master Features) -->
+    <section class="landing-section" id="featuresSection" style="background: var(--bg-surface); max-width: 100%; border-top: 1px solid var(--border-app); border-bottom: 1px solid var(--border-app);">
+      <div style="max-width: 1180px; margin: 0 auto;">
+        <div class="section-title-center">
+          <h2>Platform Core Capabilities</h2>
+          <p>Engineered to solve modern project tracking and evaluation challenges with enterprise precision.</p>
+        </div>
+
+        <div class="features-grid">
+          <!-- 1. Project Submission -->
+          <div class="feature-box">
+            <div class="feature-icon">🚀</div>
+            <h3>1. Project Submission</h3>
+            <p>Comprehensive submission terminal supporting draft saving, file validation, GitHub repo integration, live URLs, and automated project ID generation.</p>
+          </div>
+
+          <!-- 2. Real-Time Project Tracking -->
+          <div class="feature-box">
+            <div class="feature-icon">📈</div>
+            <h3>2. Real-Time Project Tracking</h3>
+            <p>Interactive milestone timeline tracking submissions across all 7 stages: Draft, Submitted, Under Review, Changes Requested, Resubmitted, Approved, and Graded.</p>
+          </div>
+
+          <!-- 3. Admin Verification -->
+          <div class="feature-box">
+            <div class="feature-icon">🛡️</div>
+            <h3>3. Admin Verification</h3>
+            <p>Dedicated faculty review dashboard with complete submission inspection, code repository links, and single-click workflow status transitions.</p>
+          </div>
+
+          <!-- 4. Detailed Feedback -->
+          <div class="feature-box">
+            <div class="feature-icon">💬</div>
+            <h3>4. Detailed Feedback</h3>
+            <p>Granular review commentary detailing strengths, weaknesses, missing features, technical bottlenecks, and actionable improvement recommendations.</p>
+          </div>
+
+          <!-- 5. Transparent Grading -->
+          <div class="feature-box">
+            <div class="feature-icon">★</div>
+            <h3>5. Transparent Grading</h3>
+            <p>Standardized 100-mark rubric spanning Problem Statement (15), Implementation (25), Innovation (15), Documentation (15), UI/UX (10), Presentation (10), and Completeness (10).</p>
+          </div>
+
+          <!-- 6. Performance Analytics -->
+          <div class="feature-box">
+            <div class="feature-icon">📊</div>
+            <h3>6. Performance Analytics</h3>
+            <p>Visual cohort metrics illustrating monthly submissions, status distributions, department-wise breakdowns, and grade distributions with CSV export.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Student and Admin Access Section -->
+    <section class="landing-section" id="portalsSection">
+      <div class="section-title-center">
+        <h2>Choose Your Workspace</h2>
+        <p>Access your dedicated academic workspace with role-enforced authentication.</p>
+      </div>
+
+      <div class="portal-access-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+        <!-- Student Card -->
+        <div class="portal-access-card student">
+          <span class="portal-card-badge">CANDIDATE WORKSPACE</span>
+          <h3>Student Portal</h3>
+          <p>For enrolled students to submit capstone projects, track review stages in real-time, and view published rubric evaluations.</p>
+          <ul class="portal-feature-list">
+            <li>Submit &amp; Version Capstone Projects</li>
+            <li>Real-Time 7-Stage Milestone Tracking</li>
+            <li>Inspect Detailed Rubric Grades &amp; Weaknesses</li>
+            <li>Direct Teacher Feedback &amp; Resubmission</li>
+          </ul>
+          <div class="portal-card-actions">
+            <button class="btn btn-primary" style="flex: 1;" onclick="app.openStudentAuthModal('login')">
+              Access Student Portal &rarr;
+            </button>
+            <button class="btn btn-quiet" onclick="app.openStudentAuthModal('register')">
+              Register Account
+            </button>
+          </div>
+        </div>
+
+        <!-- Teacher Card -->
+        <div class="portal-access-card teacher" style="border-top: 3px solid #10B981;">
+          <span class="portal-card-badge" style="background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3);">SUPERVISOR / GUIDE WORKSPACE</span>
+          <h3>Teacher Portal</h3>
+          <p>For Faculty Mentors and Project Guides to review assigned student rosters, supervise milestones, request revisions, and grade submissions.</p>
+          <ul class="portal-feature-list">
+            <li>Inspect Assigned Student Cohorts</li>
+            <li>Review Deliverables &amp; Set Milestones</li>
+            <li>Request Specific Technical Revisions</li>
+            <li>Grade via 100-Mark Rubric Evaluation</li>
+          </ul>
+          <div class="portal-card-actions">
+            <button class="btn btn-quiet" style="flex: 1; border-color: rgba(16, 185, 129, 0.5); color: #10B981; font-weight: 700;" onclick="app.openTeacherAuthModal()">
+              Access Teacher Portal &rarr;
+            </button>
+          </div>
+        </div>
+
+        <!-- Admin Card -->
+        <div class="portal-access-card admin">
+          <span class="portal-card-badge">EVALUATOR COMMAND</span>
+          <h3>Admin Portal</h3>
+          <p>For HODs and Administrators to manage students, faculty guides, assign teachers, verify deliverables, and publish rubric evaluations.</p>
+          <ul class="portal-feature-list">
+            <li>Manage Students &amp; Faculty Accounts</li>
+            <li>Assign Guides &amp; Project Supervisors</li>
+            <li>100-Mark Evaluation Rubric &amp; Auto Grading</li>
+            <li>Export Cohort Analytics &amp; Marks Dossiers</li>
+          </ul>
+          <div class="portal-card-actions">
+            <button class="btn btn-purple" style="flex: 1;" onclick="app.openAdminAuthModal()">
+              Access Admin Portal &rarr;
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About & College Capstone Overview Section -->
+    <section class="landing-section" id="aboutSection" style="background: var(--bg-surface); border-top: 1px solid var(--border-app); padding: 4rem 2rem;">
+      <div style="max-width: 1100px; margin: 0 auto;">
+        <div class="section-title-center">
+          <h2>About the Capstone Management System</h2>
+          <p>Academic Project Documentation &bull; Engineering Problem Definition &bull; Scope</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+          <div class="card-panel">
+            <h4 style="color: var(--brand-blue); margin-bottom: 0.5rem;">🎯 Project Problem</h4>
+            <p style="color: var(--text-secondary); line-height: 1.6; font-size: 0.9rem;">
+              Traditional academic capstone reviews suffer from untracked email submissions, scattered documentation files, untraceable revision cycles, and subjective evaluation rubrics lacking transparent criterion marks.
+            </p>
+          </div>
+
+          <div class="card-panel">
+            <h4 style="color: var(--accent-emerald); margin-bottom: 0.5rem;">💡 Proposed Solution</h4>
+            <p style="color: var(--text-secondary); line-height: 1.6; font-size: 0.9rem;">
+              A centralized, role-based web platform integrating candidate project submissions, permanent asset storage (PDF specs, PPT slides, Git code), 7-stage milestone state machines, and a faculty 100-mark rubric evaluator.
+            </p>
+          </div>
+
+          <div class="card-panel">
+            <h4 style="color: var(--brand-purple); margin-bottom: 0.5rem;">🚀 Objectives &amp; Scope</h4>
+            <p style="color: var(--text-secondary); line-height: 1.6; font-size: 0.9rem;">
+              1. Enforce phase-gate review governance (Draft &rarr; Submitted &rarr; Review &rarr; Resubmission &rarr; Viva &rarr; Grade).<br>
+              2. Maintain multi-version provenance ledgers preventing duplicate project records.<br>
+              3. Deliver standardized marks evaluation and CSV audit dossiers.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Professional Academic Footer -->
+    <footer class="site-footer" style="padding: 2.5rem 2rem; border-top: 1px solid var(--border-app); background: var(--bg-app); text-align: center;">
+      <div style="font-weight: 700; color: var(--text-primary); font-size: 1rem;">
+        EduProject &bull; Student Project Management &amp; Faculty Evaluation Platform
+      </div>
+      <div style="margin-top: 0.5rem; color: var(--text-muted); font-size: 0.825rem;">
+        Department of Computer Science &amp; Engineering &bull; Major Capstone Project System
+      </div>
+      <div style="margin-top: 0.5rem; color: var(--text-muted); font-size: 0.775rem;">
+        Secure Authentication (PBKDF2-HMAC-SHA256) &bull; Native SQLite3 Persistence &bull; Configurable 100-Mark Rubric
+      </div>
+    </footer>
+  </div>
+
+  <!-- ====================================================================== -->
+  <!-- 2. STUDENT PORTAL APP SHELL -->
+  <!-- ====================================================================== -->
+  <div id="viewStudentPortal" class="view-screen app-shell" style="display: none;">
+    <div class="sidebar-overlay" id="studentSidebarOverlay" onclick="app.closeSidebar('student')"></div>
+
+    <!-- Sidebar -->
+    <aside class="app-sidebar" id="studentSidebar">
+      <div class="sidebar-header">
+        <div class="brand-icon">⚡</div>
+        <div>
+          <div style="font-weight: 800; font-size: 0.95rem;">STUDENT WORKSPACE</div>
+          <div style="font-size: 0.7rem; color: var(--text-muted);">APTS &bull; PROJECT PLATFORM</div>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a class="sidebar-nav-item active" data-stab="sTabDashboard" onclick="app.switchStudentTab('sTabDashboard')">
+          <span>📊</span> Dashboard
+        </a>
+        <a class="sidebar-nav-item" data-stab="sTabSubmit" onclick="app.switchStudentTab('sTabSubmit')">
+          <span>⚡</span> Submit Project
+        </a>
+        <a class="sidebar-nav-item" data-stab="sTabProjects" onclick="app.switchStudentTab('sTabProjects')">
+          <span>📁</span> My Projects
+        </a>
+        <a class="sidebar-nav-item" data-stab="sTabTracking" onclick="app.switchStudentTab('sTabTracking')">
+          <span>📈</span> Project Tracking
+        </a>
+        <a class="sidebar-nav-item" data-stab="sTabFeedback" onclick="app.switchStudentTab('sTabFeedback')">
+          <span>★</span> Feedback &amp; Grades
+        </a>
+        <a class="sidebar-nav-item" data-stab="sTabNotifications" onclick="app.switchStudentTab('sTabNotifications')">
+          <span>🔔</span> Notifications <span class="badge-counter" id="studentNotifBadge">0</span>
+        </a>
+        <a class="sidebar-nav-item" data-stab="sTabProfile" onclick="app.switchStudentTab('sTabProfile')">
+          <span>👤</span> Profile
+        </a>
+        <a class="sidebar-nav-item" data-stab="sTabLab" onclick="app.switchStudentTab('sTabLab')">
+          <span>🧪</span> Architecture Lab
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-profile-widget">
+          <div class="user-avatar" id="studentSidebarAvatar">👨‍🎓</div>
+          <div class="user-info-text">
+            <div class="user-name" id="studentSidebarName">Aarav Patel</div>
+            <div class="user-role-label" id="studentSidebarEnr">21CS042 &bull; CSE Sem 6</div>
+          </div>
+          <button class="btn-icon" onclick="app.logout()" title="Logout" style="width: 28px; height: 28px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="app-main">
+      <header class="app-topbar">
+        <div style="display: flex; align-items: center;">
+          <button class="sidebar-toggle-btn" onclick="app.toggleSidebar('student')" title="Toggle Menu">☰</button>
+          <div class="topbar-title" id="studentTopTitle">Student Dashboard</div>
+        </div>
+        <div class="topbar-actions">
+          <button class="btn btn-primary" onclick="app.switchStudentTab('sTabSubmit')">
+            + Submit Project
+          </button>
+          <button class="btn-icon" onclick="app.switchStudentTab('sTabNotifications')" title="Notifications">
+            🔔
+          </button>
+          <button class="btn-icon" onclick="app.toggleTheme()" title="Toggle Light/Dark Theme">
+            🌓
+          </button>
+        </div>
+      </header>
+
+      <div class="app-content">
+        <!-- 1. Student Dashboard Tab -->
+        <div id="sTabDashboard" class="student-page-panel active">
+          <div class="card-panel" style="background: linear-gradient(135deg, rgba(0, 212, 255, 0.08), rgba(100, 124, 255, 0.05)); border-color: rgba(0, 212, 255, 0.25);">
+            <div style="font-size: 0.8rem; color: var(--brand-blue); font-weight: 700;">STUDENT ACADEMIC PORTAL</div>
+            <h2 style="font-size: 1.6rem; margin: 0.25rem 0;" id="studentWelcomeName">Welcome, Aarav Patel</h2>
+            <p style="color: var(--text-secondary); font-size: 0.9rem;">
+              Academic Capstone Management &bull; Track review lifecycle and grade accreditation.
+            </p>
+          </div>
+
+          <!-- Student KPI Metrics Grid (Exact 7 Master Cards) -->
+          <div class="kpi-metrics-grid" style="grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));">
+            <div class="kpi-card">
+              <div class="kpi-header"><span class="kpi-label">Total Projects</span><div class="kpi-icon icon-blue">📁</div></div>
+              <div class="kpi-val" id="sKpiTotal">0</div>
+              <div class="kpi-sub">Total records</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-header"><span class="kpi-label">Submitted Projects</span><div class="kpi-icon icon-blue" style="background: rgba(100,124,255,0.15); color: var(--brand-purple);">⚡</div></div>
+              <div class="kpi-val" style="color: var(--brand-purple);" id="sKpiSubmitted">0</div>
+              <div class="kpi-sub">New submissions</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-header"><span class="kpi-label">Pending Reviews</span><div class="kpi-icon icon-amber">⏳</div></div>
+              <div class="kpi-val" style="color: var(--accent-amber);" id="sKpiPending">0</div>
+              <div class="kpi-sub">In faculty queue</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-header"><span class="kpi-label">Under Review</span><div class="kpi-icon icon-blue" style="background: rgba(0,212,255,0.15); color: var(--brand-blue);">🔍</div></div>
+              <div class="kpi-val" style="color: var(--brand-blue);" id="sKpiReview">0</div>
+              <div class="kpi-sub">Active inspection</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-header"><span class="kpi-label">Changes Requested</span><div class="kpi-icon icon-rose" style="background: rgba(239,68,68,0.15); color: var(--accent-rose);">↺</div></div>
+              <div class="kpi-val" style="color: var(--accent-rose);" id="sKpiChanges">0</div>
+              <div class="kpi-sub">Awaiting your revision</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-header"><span class="kpi-label">Approved Projects</span><div class="kpi-icon icon-green">✓</div></div>
+              <div class="kpi-val" style="color: var(--accent-emerald);" id="sKpiApproved">0</div>
+              <div class="kpi-sub">Cleared for viva</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-header"><span class="kpi-label">Latest Grade</span><div class="kpi-icon icon-purple">★</div></div>
+              <div class="kpi-val" style="color: var(--brand-blue);" id="sKpiGrade">N/A</div>
+              <div class="kpi-sub" id="sKpiScore">Published marks</div>
+            </div>
+          </div>
+
+          <!-- Active Projects Section -->
+          <div class="card-panel">
+            <div class="card-panel-header">
+              <div class="card-panel-title"><span>📋</span> My Active Capstones</div>
+              <button class="btn btn-quiet" onclick="app.switchStudentTab('sTabSubmit')">+ Submit New</button>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Project ID &amp; Title</th>
+                    <th>Category</th>
+                    <th>Submission Date</th>
+                    <th>Status</th>
+                    <th>Grade</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="studentDashboardProjectsTable">
+                  <!-- Populated dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Submit New Project Tab -->
+        <div id="sTabSubmit" class="student-page-panel" style="display: none;">
+          <div class="card-panel" style="max-width: 860px; margin: 0 auto;">
+            <div class="card-panel-header">
+              <div class="card-panel-title"><span>⚡</span> Capstone Project Submission Terminal</div>
+              <span class="status-pill status-submitted">Form APTS-SUBMIT</span>
+            </div>
+
+            <form id="projectSubmissionForm" onsubmit="event.preventDefault(); app.handleProjectSubmit();">
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Project Title *</label>
+                  <input type="text" id="subTitle" class="form-control" placeholder="e.g. Multi-Core RISC-V Processor with MESI Cache Coherence" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Project Category *</label>
+                  <select id="subCategory" class="form-control" required>
+                    <option value="Computer Architecture &amp; Parallel Systems">Computer Architecture &amp; Parallel Systems</option>
+                    <option value="High Performance Computing &amp; Networks">High Performance Computing &amp; Networks</option>
+                    <option value="Digital Electronics &amp; VLSI">Digital Electronics &amp; VLSI</option>
+                    <option value="Artificial Intelligence &amp; Edge Hardware">Artificial Intelligence &amp; Edge Hardware</option>
+                    <option value="Cloud Systems &amp; Operating Systems">Cloud Systems &amp; Operating Systems</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Project Abstract *</label>
+                <textarea id="subAbstract" class="form-control" rows="3" placeholder="Comprehensive summary of the architectural design, methodology, and verification outcomes..." required></textarea>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Problem Statement *</label>
+                  <textarea id="subProblem" class="form-control" rows="3" placeholder="What architectural deficiency or computing bottleneck does this capstone address?" required></textarea>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Project Objectives *</label>
+                  <textarea id="subObjectives" class="form-control" rows="3" placeholder="Key technical milestones: 1. Synthesis 2. Forwarding unit 3. Snoop testbench..." required></textarea>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Technologies &amp; Simulators Used *</label>
+                  <input type="text" id="subTechnologies" class="form-control" placeholder="e.g. Verilog HDL, GTKWave, C++, RISC-V Toolchain, Python" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Team Members (Optional)</label>
+                  <input type="text" id="subTeam" class="form-control" placeholder="e.g. Pooja Mehta (21CS043), Karan Singhania (21CS044)" />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">GitHub / GitLab Repository URL *</label>
+                  <input type="url" id="subRepo" class="form-control" placeholder="https://github.com/..." required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Live Demo / Documentation URL</label>
+                  <input type="url" id="subLive" class="form-control" placeholder="https://..." />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Project Documentation (PDF)</label>
+                  <input type="file" id="subDocFile" class="form-control" accept=".pdf,.doc,.docx" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Project Presentation (PPT/PPTX)</label>
+                  <input type="file" id="subPresFile" class="form-control" accept=".ppt,.pptx,.pdf" />
+                </div>
+              </div>
+
+              <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+                <button type="button" class="btn btn-quiet" onclick="app.handleProjectDraft()">Save as Draft</button>
+                <button type="submit" class="btn btn-primary">
+                  <span>⚡</span> Final Submit Capstone
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- 3. My Projects Tab -->
+        <div id="sTabProjects" class="student-page-panel" style="display: none;">
+          <div class="card-panel">
+            <div class="card-panel-header">
+              <div class="card-panel-title"><span>📁</span> All Submitted Capstone Projects</div>
+              <button class="btn btn-primary" onclick="app.switchStudentTab('sTabSubmit')">+ Submit New</button>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Project ID</th>
+                    <th>Title &amp; Category</th>
+                    <th>Version</th>
+                    <th>Status</th>
+                    <th>Evaluation</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="studentAllProjectsTable"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Project Tracking Tab (Complete Interactive A-F Suite) -->
+        <div id="sTabTracking" class="student-page-panel" style="display: none;">
+          <div class="card-panel">
+            <div class="card-panel-header">
+              <div class="card-panel-title"><span>📈</span> Project Tracking &amp; Evaluation Monitor</div>
+              <div style="display: flex; gap: 0.75rem; align-items: center;">
+                <label class="form-label" style="margin: 0; white-space: nowrap;">Active Project:</label>
+                <select id="trackProjectSelector" class="form-control" style="width: auto; min-width: 280px;" onchange="app.loadProjectTracking(this.value)">
+                  <!-- Populated dynamically -->
+                </select>
+              </div>
+            </div>
+
+            <!-- F. Final Grade Card (Prominent Top Banner) -->
+            <div id="trackingFinalGradeCard" style="display: none; margin-bottom: 1.5rem;"></div>
+
+            <!-- Changes Requested Urgent Notice & Action Banner -->
+            <div id="trackingChangesBanner" style="display: none; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.4); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 1.5rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <div>
+                  <h4 style="color: var(--accent-rose); font-size: 1rem; margin-bottom: 0.25rem;">↺ Faculty Requested Improvements</h4>
+                  <p style="color: var(--text-secondary); font-size: 0.85rem;" id="trackingChangesBannerMsg">
+                    Faculty has reviewed your submission and requested modifications before Viva clearance.
+                  </p>
+                </div>
+                <button class="btn btn-purple" id="btnOpenResubmit" onclick="app.openResubmitModal()">
+                  <span>↺</span> Submit Improved Version
+                </button>
+              </div>
+            </div>
+
+            <!-- A. Project Progress Timeline (7-Stage Full Lifecycle) -->
+            <div style="margin: 1.5rem 0;">
+              <h4 style="font-size: 0.95rem; margin-bottom: 0.75rem; color: var(--text-primary);">A. Milestone Progress Stepper</h4>
+              <div class="tracking-stepper" id="trackingVisualStepper">
+                <div class="step-node" id="stepNodeDraft"><div class="step-bubble">1</div><div class="step-label">Draft</div></div>
+                <div class="step-node" id="stepNodeSubmitted"><div class="step-bubble">2</div><div class="step-label">Submitted</div></div>
+                <div class="step-node" id="stepNodeReview"><div class="step-bubble">3</div><div class="step-label">Under Review</div></div>
+                <div class="step-node" id="stepNodeChanges"><div class="step-bubble">4</div><div class="step-label">Changes Req.</div></div>
+                <div class="step-node" id="stepNodeResubmitted"><div class="step-bubble">5</div><div class="step-label">Resubmitted</div></div>
+                <div class="step-node" id="stepNodeApproved"><div class="step-bubble">6</div><div class="step-label">Approved</div></div>
+                <div class="step-node" id="stepNodeGraded"><div class="step-bubble">7</div><div class="step-label">Graded</div></div>
+              </div>
+            </div>
+
+            <!-- 4-Grid Analytics Suite (B, C, G, H) -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem; margin: 2rem 0;">
+              <!-- B. Project Status Chart -->
+              <div style="background: var(--bg-surface); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-app);">
+                <div style="font-size: 0.8rem; font-weight: 700; color: var(--brand-blue); text-transform: uppercase;">B. Status Distribution</div>
+                <h4 style="font-size: 0.95rem; margin-top: 0.25rem;">My Projects Portfolio</h4>
+                <div id="studentStatusChartContainer" style="margin-top: 1rem; min-height: 180px; display: flex; align-items: center; justify-content: center;"></div>
+              </div>
+
+              <!-- C. Evaluation Marks Chart -->
+              <div style="background: var(--bg-surface); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-app);">
+                <div style="font-size: 0.8rem; font-weight: 700; color: var(--brand-purple); text-transform: uppercase;">C. Evaluation Marks Chart</div>
+                <h4 style="font-size: 0.95rem; margin-top: 0.25rem;">Rubric Scores vs Maximum Marks</h4>
+                <div id="studentRubricMarksChartContainer" style="margin-top: 1rem; min-height: 180px;"></div>
+              </div>
+
+              <!-- G. Progress Timeline Chart -->
+              <div style="background: var(--bg-surface); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-app);">
+                <div style="font-size: 0.8rem; font-weight: 700; color: var(--accent-emerald); text-transform: uppercase;">G. Progress Timeline</div>
+                <h4 style="font-size: 0.95rem; margin-top: 0.25rem;">Lifecycle Stage Duration &amp; Transitions</h4>
+                <div id="studentProgressTimelineContainer" style="margin-top: 1rem; min-height: 180px;"></div>
+              </div>
+
+              <!-- H. Provenance & Version Ledger -->
+              <div style="background: var(--bg-surface); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-app);">
+                <div style="font-size: 0.8rem; font-weight: 700; color: var(--brand-cyan); text-transform: uppercase;">H. Version Ledger</div>
+                <h4 style="font-size: 0.95rem; margin-top: 0.25rem;">Revision Provenance &amp; Documents</h4>
+                <div id="studentVersionHistoryContainer" style="margin-top: 1rem; min-height: 180px; display: flex; flex-direction: column; gap: 0.5rem;"></div>
+              </div>
+            </div>
+
+            <!-- E. Admin Feedback Panel -->
+            <div id="trackingAdminFeedbackPanel" style="margin: 1.5rem 0;"></div>
+
+            <!-- D. Submission History (Chronological Audit Log) -->
+            <div style="margin-top: 2rem;">
+              <h4 style="font-size: 1rem; margin-bottom: 0.85rem; color: var(--text-primary);">D. Submission &amp; Review History</h4>
+              <div id="trackingTimelineEvents" style="display: flex; flex-direction: column; gap: 0.75rem;">
+                <!-- Populated dynamically -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Feedback & Grades Tab -->
+        <div id="sTabFeedback" class="student-page-panel" style="display: none;">
+          <div class="card-panel">
+            <div class="card-panel-header">
+              <div class="card-panel-title"><span>★</span> Faculty Feedback &amp; Rubric Marks</div>
+              <select id="feedbackProjectSelector" class="form-control" style="width: auto; min-width: 250px;" onchange="app.loadStudentFeedback(this.value)"></select>
+            </div>
+            <div id="studentFeedbackContent">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Notifications Tab -->
+        <div id="sTabNotifications" class="student-page-panel" style="display: none;">
+          <div class="card-panel">
+            <div class="card-panel-header">
+              <div class="card-panel-title"><span>🔔</span> Notifications &amp; Alerts</div>
+              <button class="btn btn-quiet" onclick="app.markAllNotificationsRead()">Mark All Read</button>
+            </div>
+            <div id="studentNotificationsList" style="display: flex; flex-direction: column; gap: 0.75rem;"></div>
+          </div>
+        </div>
+
+        <!-- 7. My Profile Tab -->
+        <div id="sTabProfile" class="student-page-panel" style="display: none;">
+          <div class="card-panel" style="max-width: 650px;">
+            <div class="card-panel-header">
+              <div class="card-panel-title"><span>👤</span> Student Academic Profile</div>
+            </div>
+            <div style="display: flex; gap: 1.5rem; align-items: center; margin-bottom: 1.5rem;">
+              <div style="width: 72px; height: 72px; border-radius: 50%; background: var(--bg-surface); border: 2px solid var(--brand-blue); display: flex; align-items: center; justify-content: center; font-size: 2.2rem;">
+                👨‍🎓
+              </div>
+              <div>
+                <h3 id="profName" style="font-size: 1.25rem;">Aarav Patel</h3>
+                <div id="profEmail" style="color: var(--text-secondary); font-size: 0.85rem;">aarav.patel@student.univ.edu</div>
+                <div style="margin-top: 0.35rem;"><span class="status-pill status-approved">Enrolled Student</span></div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Enrollment / PRN</label>
+                <input type="text" id="profEnr" class="form-control" readonly />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Department</label>
+                <input type="text" id="profDept" class="form-control" readonly />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Branch</label>
+                <input type="text" id="profBranch" class="form-control" readonly />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Current Semester</label>
+                <input type="text" id="profSem" class="form-control" readonly />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. Architecture Lab Tab -->
+        <div id="sTabLab" class="student-page-panel" style="display: none;">
+          <div class="card-panel">
+            <div class="card-panel-header">
+              <div class="card-panel-title"><span>🧪</span> Integrated Architecture Lab (Units 1 - 5)</div>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1.25rem;">
+              Test your micro-architecture designs against standard test vectors before final submission:
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+              <div style="background: var(--bg-surface); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-app);">
+                <h4>Booth Multiplier (Unit 2)</h4>
+                <p style="font-size: 0.775rem; color: var(--text-secondary); margin: 0.5rem 0;">Radix-4 signed operand multiplication with arithmetic right shifts.</p>
+                <button class="btn btn-quiet" style="width: 100%;" onclick="app.runBoothDemo()">Execute Booth Testbench</button>
+              </div>
+
+              <div style="background: var(--bg-surface); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-app);">
+                <h4>5-Stage Pipeline (Unit 3)</h4>
+                <p style="font-size: 0.775rem; color: var(--text-secondary); margin: 0.5rem 0;">Hazard forwarding unit resolving RAW register data dependencies.</p>
+                <button class="btn btn-quiet" style="width: 100%;" onclick="app.runPipelineDemo()">Step Pipeline Cycle</button>
+              </div>
+
+              <div style="background: var(--bg-surface); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-app);">
+                <h4>MESI Coherence (Unit 4)</h4>
+                <p style="font-size: 0.775rem; color: var(--text-secondary); margin: 0.5rem 0;">Snoop-based broadcast protocol simulating M, E, S, and I states.</p>
+                <button class="btn btn-quiet" style="width: 100%;" onclick="app.runMesiDemo()">Simulate Bus Snoop</button>
+              </div>
+            </div>
+
+            <div class="sim-display-screen" id="labOutputBox" style="margin-top: 1.25rem; background: #060a12; color: #38bdf8; font-family: monospace; padding: 1rem; border-radius: var(--radius-md); font-size: 0.8rem; border: 1px solid var(--border-app); min-height: 80px;">
+              // Architecture Lab Terminal ready. Click any testbench above.
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- ====================================================================== -->
+  <!-- 3. ADMIN & FACULTY PORTAL APP SHELL (NO DEPLOY BUTTON) -->
+  <!-- ====================================================================== -->
+  <div id="viewAdminPortal" class="view-screen app-shell admin-shell" style="display: none;">
+    <div class="sidebar-overlay" id="adminSidebarOverlay" onclick="app.closeSidebar('admin')"></div>
+
+    <!-- Sidebar -->
+    <aside class="app-sidebar" id="adminSidebar">
+      <div class="sidebar-header">
+        <div class="brand-icon" style="background: linear-gradient(135deg, var(--brand-purple), var(--brand-indigo));">FAC</div>
+        <div>
+          <div style="font-weight: 800; font-size: 0.95rem;">FACULTY COMMAND</div>
+          <div style="font-size: 0.7rem; color: var(--text-muted);">EVALUATOR &bull; ACCREDITATION</div>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a class="sidebar-nav-item active" data-atab="aTabDashboard" onclick="app.switchAdminTab('aTabDashboard')">
+          <span>📊</span> Overview
+        </a>
+        <a class="sidebar-nav-item" data-atab="aTabStudents" onclick="app.switchAdminTab('aTabStudents')">
+          <span>👥</span> Students Management
+        </a>
+        <a class="sidebar-nav-item" data-atab="aTabTeachers" onclick="app.switchAdminTab('aTabTeachers')">
+          <span>👨‍🏫</span> Faculty / Teachers
+        </a>
+        <a class="sidebar-nav-item" data-atab="aTabAssignments" onclick="app.switchAdminTab('aTabAssignments')">
+          <span>🔗</span> Guide Assignments
+        </a>
+        <a class="sidebar-nav-item" data-atab="aTabProjects" onclick="app.switchAdminTab('aTabProjects')">
+          <span>📁</span> All Projects
+        </a>
+        <a class="sidebar-nav-item" data-atab="aTabPending" onclick="app.switchAdminTab('aTabPending')">
+          <span>⏳</span> Pending Reviews <span class="badge-counter" id="adminPendingBadge" style="background: var(--brand-purple);">0</span>
+        </a>
+        <a class="sidebar-nav-item" data-atab="aTabReview" onclick="app.switchAdminTab('aTabReview')">
+          <span>🔍</span> Under Review
+        </a>
+        <a class="sidebar-nav-item" data-atab="aTabEvaluation" onclick="app.switchAdminTab('aTabEvaluation')">
+          <span>★</span> Evaluation &amp; Grading
+        </a>
+        <a class="sidebar-nav-item" data-atab="aTabApproved" onclick="app.switchAdminTab('aTabApproved')">
+          <span>✓</span> Approved Projects
+        </a>
+        <a class="sidebar-nav-item" data-atab="aTabRejected" onclick="app.switchAdminTab('aTabRejected')">
+          <span>✕</span> Rejected Projects
+        </a>
+        <a class="sidebar-nav-item" data-atab="aTabAnalytics" onclick="app.switchAdminTab('aTabAnalytics')">
+          <span>📈</span> Analytics
+        </a>
+        <a class="sidebar-nav-item" data-atab="aTabAdminNotifs" onclick="app.switchAdminTab('aTabAdminNotifs')">
+          <span>🔔</span> Notifications
+        </a>
+        <a class="sidebar-nav-item" data-atab="aTabSettings" onclick="app.switchAdminTab('aTabSettings')">
+          <span>⚙️</span> Settings
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-profile-widget">
+          <div class="user-avatar">👨‍🏫</div>
+          <div class="user-info-text">
+            <div class="user-name">Dr. V. K. Sharma</div>
+            <div class="user-role-label">Faculty Evaluator</div>
+          </div>
+          <button class="btn-icon" onclick="app.logout()" title="Logout" style="width: 28px; height: 28px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="app-main">
+      <header class="app-topbar">
+        <div style="display: flex; align-items: center;">
+          <button class="sidebar-toggle-btn" onclick="app.toggleSidebar('admin')" title="Toggle Menu">☰</button>
+          <div class="topbar-title" id="adminTopTitle">Admin Command Center</div>
+        </div>
+        <div class="topbar-actions">
+          <button class="btn btn-purple" onclick="app.exportCsvReport()">
+            <span>📄</span> Export CSV Report
+          </button>
+          <button class="btn-icon" onclick="app.toggleTheme()" title="Toggle Theme">
+            🌓
+          </button>
+        </div>
+      </header>
+
+      <div class="app-content">
+        <!-- 1. Admin Dashboard Tab (6 Master KPI Cards) -->
+        <div id="aTabDashboard" class="admin-page-panel active">
+          <!-- KPI Metrics Grid -->
+          <div class="kpi-metrics-grid" style="grid-template-columns: repeat(6, 1fr);">
+            <div class="kpi-card">
+              <div class="kpi-header"><span class="kpi-label">Total Students</span><div class="kpi-icon icon-blue">👥</div></div>
+              <div class="kpi-val" id="aKpiStudents">0</div>
+              <div class="kpi-sub">Registered roster</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-header"><span class="kpi-label">Total Submissions</span><div class="kpi-icon icon-purple">📁</div></div>
+              <div class="kpi-val" id="aKpiProjects">0</div>
+              <div class="kpi-sub">Cohort submissions</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-header"><span class="kpi-label">Pending Reviews</span><div class="kpi-icon icon-amber">⏳</div></div>
+              <div class="kpi-val" style="color: var(--accent-amber);" id="aKpiPending">0</div>
+              <div class="kpi-sub">Awaiting verification</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-header"><span class="kpi-label">Approved Projects</span><div class="kpi-icon icon-green">✓</div></div>
+              <div class="kpi-val" style="color: var(--accent-emerald);" id="aKpiApproved">0</div>
+              <div class="kpi-sub">Cleared for viva</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-header"><span class="kpi-label">Rejected Projects</span><div class="kpi-icon icon-rose" style="background: rgba(239,68,68,0.15); color: #EF4444;">✕</div></div>
+              <div class="kpi-val" style="color: #EF4444;" id="aKpiRejected">0</div>
+              <div class="kpi-sub">Action required</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-header"><span class="kpi-label">Average Score</span><div class="kpi-icon icon-blue" style="background: rgba(0,212,255,0.15); color: var(--brand-blue);">★</div></div>
+              <div class="kpi-val" style="color: var(--brand-blue);" id="aKpiAvgScore">0.0</div>
+              <div class="kpi-sub">Published marks / 100</div>
+            </div>
+          </div>
+
+          <!-- Quick Review Queue Panel -->
+          <div class="card-panel">
+            <div class="card-panel-header">
+              <div class="card-panel-title"><span>⏳</span> Priority Review Queue</div>
+              <button class="btn btn-quiet" onclick="app.switchAdminTab('aTabProjects')">View All &rarr;</button>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Project ID &amp; Title</th>
+                    <th>Candidate</th>
+                    <th>Department</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="adminQuickReviewTable"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Students Management Tab -->
+        <div id="aTabStudents" class="admin-page-panel" style="display: none;">
+          <div class="card-panel">
+            <div class="card-panel-header" style="flex-wrap: wrap; gap: 1rem;">
+              <div class="card-panel-title"><span>👥</span> Student Accounts &amp; Roster Management</div>
+              <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                <input type="text" id="adminStudentSearch" class="form-control" style="width: 220px;" placeholder="Search name or PRN..." oninput="app.filterAdminStudents()" />
+                <select id="adminStudentDeptFilter" class="form-control" style="width: 180px;" onchange="app.filterAdminStudents()">
+                  <option value="all">All Departments</option>
+                  <option value="Computer Science & Engineering">Computer Science &amp; Eng</option>
+                  <option value="Information Technology">Information Technology</option>
+                  <option value="Electronics & Communication">Electronics &amp; Comm</option>
+                </select>
+                <button class="btn btn-primary" onclick="app.openAddStudentModal()">
+                  + Add Student
+                </button>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Student Name &amp; PRN</th>
+                    <th>Email</th>
+                    <th>Department &amp; Sem</th>
+                    <th>Assigned Guide</th>
+                    <th>Projects</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="adminStudentsTable"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2b. Faculty / Teachers Management Tab -->
+        <div id="aTabTeachers" class="admin-page-panel" style="display: none;">
+          <div class="card-panel">
+            <div class="card-panel-header" style="flex-wrap: wrap; gap: 1rem;">
+              <div class="card-panel-title"><span>👨‍🏫</span> Faculty / Teacher Management</div>
+              <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                <input type="text" id="adminTeacherSearch" class="form-control" style="width: 220px;" placeholder="Search faculty name or ID..." oninput="app.filterAdminTeachers()" />
+                <button class="btn btn-purple" onclick="app.openAddTeacherModal()">
+                  + Add Faculty / Teacher
+                </button>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Faculty Name &amp; ID</th>
+                    <th>Email &amp; Phone</th>
+                    <th>Department &amp; Designation</th>
+                    <th>Specialization</th>
+                    <th>Assigned Students</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="adminTeachersTable"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2c. Teacher-Student Assignments Tab -->
+        <div id="aTabAssignments" class="admin-page-panel" style="display: none;">
+          <div class="card-panel">
+            <div class="card-panel-header" style="flex-wrap: wrap; gap: 1rem;">
+              <div class="card-panel-title"><span>🔗</span> Teacher-Student Project Assignments</div>
+              <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                <button class="btn btn-primary" onclick="app.openAssignModal()">
+                  + Assign Guide to Student
+                </button>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Assigned Faculty Guide</th>
+                    <th>Student Name &amp; PRN</th>
+                    <th>Associated Capstone</th>
+                    <th>Submission Deadline</th>
+                    <th>Status</th>
+                    <th>Assigned Date</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="adminAssignmentsTable"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. All Projects Tab -->
+        <div id="aTabProjects" class="admin-page-panel" style="display: none;">
+          <div class="card-panel">
+            <div class="card-panel-header">
+              <div class="card-panel-title"><span>📁</span> All Capstone Submissions</div>
+              <div style="display: flex; gap: 0.5rem;">
+                <input type="text" id="adminProjectSearch" class="form-control" style="width: 240px;" placeholder="Search title or PRN..." oninput="app.searchAdminProjects(this.value)" />
+                <select id="adminStatusFilter" class="form-control" style="width: 160px;" onchange="app.filterAdminProjects(this.value)">
+                  <option value="all">All Statuses</option>
+                  <option value="Submitted">Submitted</option>
+                  <option value="Under Review">Under Review</option>
+                  <option value="Changes Requested">Changes Requested</option>
+                  <option value="Approved">Approved</option>
+                  <option value="Graded">Graded</option>
+                  <option value="Rejected">Rejected</option>
+                </select>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Project Title</th>
+                    <th>Candidate</th>
+                    <th>Category</th>
+                    <th>Status</th>
+                    <th>Score / Grade</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="adminAllProjectsTable"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Pending Submissions Tab -->
+        <div id="aTabPending" class="admin-page-panel" style="display: none;">
+          <div class="card-panel">
+            <div class="card-panel-header">
+              <div class="card-panel-title"><span>⏳</span> Submissions Awaiting Faculty Action</div>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>ID &amp; Title</th>
+                    <th>Candidate</th>
+                    <th>Submitted Date</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="adminPendingTable"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Under Review Tab -->
+        <div id="aTabReview" class="admin-page-panel" style="display: none;">
+          <div class="card-panel">
+            <div class="card-panel-header">
+              <div class="card-panel-title"><span>🔍</span> Projects Under Technical Review</div>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>ID &amp; Title</th>
+                    <th>Candidate</th>
+                    <th>Technologies</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="adminUnderReviewTable"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Evaluation & Grading Tab -->
+        <div id="aTabEvaluation" class="admin-page-panel" style="display: none;">
+          <div class="card-panel">
+            <div class="card-panel-header">
+              <div class="card-panel-title"><span>★</span> Standardized 100-Mark Rubric Evaluation</div>
+              <button class="btn btn-purple" onclick="app.openDossierModal()">
+                <span>📄</span> Open University Dossier
+              </button>
+            </div>
+
+            <div style="margin-bottom: 1.5rem; display: flex; gap: 1rem; align-items: center;">
+              <label class="form-label" style="margin: 0;">Select Capstone to Grade:</label>
+              <select id="evalSelectProject" class="form-control" style="width: auto; min-width: 320px;" onchange="app.loadProjectIntoRubric(this.value)"></select>
+            </div>
+
+            <!-- Rubric Criteria Inputs -->
+            <div class="form-row" style="margin-bottom: 1rem;">
+              <div class="kpi-card">
+                <div class="kpi-header"><span class="kpi-label">1. Problem Statement (Max 15)</span><strong id="lblRubric1" style="color: var(--brand-blue);">15 / 15</strong></div>
+                <input type="range" class="dock-slider" id="rubricProblem" min="0" max="15" step="0.5" value="14" oninput="app.calculateAdminRubric()" />
+              </div>
+              <div class="kpi-card">
+                <div class="kpi-header"><span class="kpi-label">2. Implementation (Max 25)</span><strong id="lblRubric2" style="color: var(--brand-blue);">23 / 25</strong></div>
+                <input type="range" class="dock-slider" id="rubricImpl" min="0" max="25" step="0.5" value="23" oninput="app.calculateAdminRubric()" />
+              </div>
+            </div>
+
+            <div class="form-row" style="margin-bottom: 1rem;">
+              <div class="kpi-card">
+                <div class="kpi-header"><span class="kpi-label">3. Innovation (Max 15)</span><strong id="lblRubric3" style="color: var(--brand-blue);">14 / 15</strong></div>
+                <input type="range" class="dock-slider" id="rubricInnov" min="0" max="15" step="0.5" value="14" oninput="app.calculateAdminRubric()" />
+              </div>
+              <div class="kpi-card">
+                <div class="kpi-header"><span class="kpi-label">4. Documentation (Max 15)</span><strong id="lblRubric4" style="color: var(--brand-blue);">13 / 15</strong></div>
+                <input type="range" class="dock-slider" id="rubricDoc" min="0" max="15" step="0.5" value="13" oninput="app.calculateAdminRubric()" />
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem;">
+              <div class="kpi-card">
+                <div class="kpi-header"><span class="kpi-label">5. UI/UX Design (Max 10)</span><strong id="lblRubric5" style="color: var(--brand-blue);">9 / 10</strong></div>
+                <input type="range" class="dock-slider" id="rubricUi" min="0" max="10" step="0.5" value="9" oninput="app.calculateAdminRubric()" />
+              </div>
+              <div class="kpi-card">
+                <div class="kpi-header"><span class="kpi-label">6. Presentation (Max 10)</span><strong id="lblRubric6" style="color: var(--brand-blue);">9 / 10</strong></div>
+                <input type="range" class="dock-slider" id="rubricPres" min="0" max="10" step="0.5" value="9" oninput="app.calculateAdminRubric()" />
+              </div>
+              <div class="kpi-card">
+                <div class="kpi-header"><span class="kpi-label">7. Completeness (Max 10)</span><strong id="lblRubric7" style="color: var(--brand-blue);">9 / 10</strong></div>
+                <input type="range" class="dock-slider" id="rubricComp" min="0" max="10" step="0.5" value="9" oninput="app.calculateAdminRubric()" />
+              </div>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; background: var(--bg-surface); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-app); margin-bottom: 1.5rem;">
+              <div>
+                <div style="font-size: 0.75rem; color: var(--text-muted);">TOTAL CALCULATED MARKS</div>
+                <div style="font-size: 2rem; font-weight: 800; color: var(--brand-blue);" id="lblRubricTotalMarks">91 / 100</div>
+              </div>
+              <div>
+                <div style="font-size: 0.75rem; color: var(--text-muted);">FINAL GRADE</div>
+                <div style="font-size: 1.5rem; font-weight: 800; color: var(--accent-emerald);" id="lblRubricGradeLetter">Grade A+</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Overall Evaluation Remarks</label>
+              <textarea id="evalFeedbackText" class="form-control" rows="3" placeholder="Detailed feedback on architectural execution and viva defense..."></textarea>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Project Strengths</label>
+                <textarea id="evalStrengths" class="form-control" rows="2" placeholder="Key strengths of the implementation..."></textarea>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Project Weaknesses</label>
+                <textarea id="evalWeaknesses" class="form-control" rows="2" placeholder="Identified weaknesses..."></textarea>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Missing Features</label>
+                <textarea id="evalMissingFeatures" class="form-control" rows="2" placeholder="Features or modules expected but missing..."></textarea>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Technical Issues</label>
+                <textarea id="evalTechnicalIssues" class="form-control" rows="2" placeholder="Bugs, latency, or synthesis bottlenecks..."></textarea>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Documentation Issues</label>
+                <textarea id="evalDocIssues" class="form-control" rows="2" placeholder="Missing test logs, report formatting, or citations..."></textarea>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Suggested Improvements</label>
+                <textarea id="evalImprovements" class="form-control" rows="2" placeholder="Concrete recommendations for next iteration..."></textarea>
+              </div>
+            </div>
+
+            <div style="display: flex; justify-content: flex-end; gap: 0.75rem; align-items: center;">
+              <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; cursor: pointer; margin-right: auto;">
+                <input type="checkbox" id="evalPublishCheck" checked />
+                <span>Publish marks to student dashboard immediately</span>
+              </label>
+              <button class="btn btn-quiet" onclick="app.saveRubricEvaluation(false)">Save Evaluation Draft</button>
+              <button class="btn btn-purple" onclick="app.saveRubricEvaluation(true)">Submit &amp; Publish Grade</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Approved Projects Tab -->
+        <div id="aTabApproved" class="admin-page-panel" style="display: none;">
+          <div class="card-panel">
+            <div class="card-panel-header">
+              <div class="card-panel-title"><span>✓</span> Approved Capstones Cleared for Viva</div>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>ID &amp; Title</th>
+                    <th>Candidate</th>
+                    <th>Department</th>
+                    <th>Grade</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="adminApprovedTable"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. Rejected Projects Tab -->
+        <div id="aTabRejected" class="admin-page-panel" style="display: none;">
+          <div class="card-panel">
+            <div class="card-panel-header">
+              <div class="card-panel-title"><span>✕</span> Rejected Capstone Submissions</div>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>ID &amp; Title</th>
+                    <th>Candidate</th>
+                    <th>Rejection Rationale</th>
+                    <th>Date</th>
+                  </tr>
+                </thead>
+                <tbody id="adminRejectedTable"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9. Analytics & Reports Tab (Complete Section 9 Suite) -->
+        <div id="aTabAnalytics" class="admin-page-panel" style="display: none;">
+          <div class="card-panel">
+            <div class="card-panel-header">
+              <div class="card-panel-title"><span>📈</span> Cohort Performance &amp; Evaluation Analytics</div>
+              <button class="btn btn-purple" onclick="app.exportCsvReport()">
+                <span>📄</span> Export Complete CSV
+              </button>
+            </div>
+
+            <!-- Filters Bar (Date, Semester, Department, Status) -->
+            <div style="background: var(--bg-surface); padding: 1rem 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-app); margin-bottom: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap; align-items: flex-end;">
+              <div class="form-group" style="margin-bottom: 0; min-width: 180px;">
+                <label class="form-label" style="font-size: 0.75rem;">Department Filter</label>
+                <select id="analyticsFilterDept" class="form-control" onchange="app.loadAdminAnalytics()">
+                  <option value="all">All Departments</option>
+                  <option value="Computer Science &amp; Engineering">Computer Science &amp; Engineering</option>
+                  <option value="Information Technology">Information Technology</option>
+                  <option value="Electronics &amp; Communication">Electronics &amp; Communication</option>
+                </select>
+              </div>
+
+              <div class="form-group" style="margin-bottom: 0; min-width: 140px;">
+                <label class="form-label" style="font-size: 0.75rem;">Semester Filter</label>
+                <select id="analyticsFilterSem" class="form-control" onchange="app.loadAdminAnalytics()">
+                  <option value="all">All Semesters</option>
+                  <option value="6">Semester 6</option>
+                  <option value="7">Semester 7</option>
+                  <option value="8">Semester 8</option>
+                </select>
+              </div>
+
+              <div class="form-group" style="margin-bottom: 0; min-width: 160px;">
+                <label class="form-label" style="font-size: 0.75rem;">Status Filter</label>
+                <select id="analyticsFilterStatus" class="form-control" onchange="app.loadAdminAnalytics()">
+                  <option value="all">All Statuses</option>
+                  <option value="Submitted">Submitted</option>
+                  <option value="Under Review">Under Review</option>
+                  <option value="Changes Requested">Changes Requested</option>
+                  <option value="Approved">Approved</option>
+                  <option value="Graded">Graded</option>
+                  <option value="Rejected">Rejected</option>
+                </select>
+              </div>
+
+              <button class="btn btn-quiet" style="align-self: flex-end;" onclick="app.resetAnalyticsFilters()">
+                Reset Filters
+              </button>
+            </div>
+
+            <!-- 6 Analytics Visualizations Grid -->
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
+              <!-- 1. Monthly Project Submissions -->
+              <div style="background: var(--bg-surface); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-app);">
+                <div style="font-size: 0.8rem; font-weight: 700; color: var(--brand-blue); text-transform: uppercase;">1. Timeline Activity</div>
+                <h4 style="font-size: 1rem; margin-top: 0.25rem;">Monthly Project Submissions</h4>
+                <div id="analyticsMonthlyBars" style="margin-top: 1rem; min-height: 140px; display: flex; align-items: flex-end; gap: 0.75rem; padding-top: 1rem;"></div>
+              </div>
+
+              <!-- 2. Project Status Distribution -->
+              <div style="background: var(--bg-surface); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-app);">
+                <div style="font-size: 0.8rem; font-weight: 700; color: var(--brand-purple); text-transform: uppercase;">2. Pipeline Health</div>
+                <h4 style="font-size: 1rem; margin-top: 0.25rem;">Project Status Distribution</h4>
+                <div id="analyticsStatusBars" style="margin-top: 1rem; display: flex; flex-direction: column; gap: 0.75rem;"></div>
+              </div>
+
+              <!-- 3. Department-wise Projects -->
+              <div style="background: var(--bg-surface); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-app);">
+                <div style="font-size: 0.8rem; font-weight: 700; color: var(--accent-emerald); text-transform: uppercase;">3. Academic Units</div>
+                <h4 style="font-size: 1rem; margin-top: 0.25rem;">Department-wise Submissions</h4>
+                <div id="analyticsDeptBars" style="margin-top: 1rem; display: flex; flex-direction: column; gap: 0.75rem;"></div>
+              </div>
+
+              <!-- 4. Grade Distribution -->
+              <div style="background: var(--bg-surface); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-app);">
+                <div style="font-size: 0.8rem; font-weight: 700; color: var(--brand-blue); text-transform: uppercase;">4. Accreditation</div>
+                <h4 style="font-size: 1rem; margin-top: 0.25rem;">Grade Distribution (A+ to Improvement)</h4>
+                <div id="analyticsGradeBars" style="margin-top: 1rem; display: flex; flex-direction: column; gap: 0.65rem;"></div>
+              </div>
+
+              <!-- 5. Average Criteria Score Breakdown -->
+              <div style="background: var(--bg-surface); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-app);">
+                <div style="font-size: 0.8rem; font-weight: 700; color: var(--brand-purple); text-transform: uppercase;">5. Rubric Performance</div>
+                <h4 style="font-size: 1rem; margin-top: 0.25rem;">Average Criterion Scores (Out of Max)</h4>
+                <div id="analyticsCriteriaBars" style="margin-top: 1rem; display: flex; flex-direction: column; gap: 0.65rem;"></div>
+              </div>
+
+              <!-- 6. Approved vs Rejected Comparison -->
+              <div style="background: var(--bg-surface); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-app);">
+                <div style="font-size: 0.8rem; font-weight: 700; color: var(--accent-amber); text-transform: uppercase;">6. Clearance Ratio</div>
+                <h4 style="font-size: 1rem; margin-top: 0.25rem;">Approved vs Rejected Capstones</h4>
+                <div id="analyticsApprovedRejectedBars" style="margin-top: 1rem; display: flex; flex-direction: column; gap: 0.85rem;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10. Admin Notifications Tab -->
+        <div id="aTabAdminNotifs" class="admin-page-panel" style="display: none;">
+          <div class="card-panel">
+            <div class="card-panel-header">
+              <div class="card-panel-title"><span>🔔</span> Review Queue Notifications</div>
+              <button class="btn btn-quiet" onclick="app.loadAdminDashboard()">Refresh Queue</button>
+            </div>
+            <div id="adminNotificationsList" style="display: flex; flex-direction: column; gap: 0.75rem;">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+        </div>
+
+        <!-- 11. Admin Settings Tab (College & Evaluation Configuration) -->
+        <div id="aTabSettings" class="admin-page-panel" style="display: none;">
+          <div class="card-panel" style="max-width: 820px; margin: 0 auto;">
+            <div class="card-panel-header">
+              <div class="card-panel-title"><span>⚙️</span> Institution &amp; Capstone Evaluation Configuration</div>
+              <span class="status-pill status-approved">Faculty Control Panel</span>
+            </div>
+            
+            <form id="institutionSettingsForm" onsubmit="event.preventDefault(); app.saveInstitutionSettings();">
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Official College / Institute Name *</label>
+                  <input type="text" id="cfgCollegeName" class="form-control" value="Faculty of Engineering &amp; Technology" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Department *</label>
+                  <input type="text" id="cfgDepartment" class="form-control" value="Computer Science &amp; Engineering" required />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Degree / Program *</label>
+                  <input type="text" id="cfgProgram" class="form-control" value="B.Tech Computer Science &amp; Engineering" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Academic Year &amp; Semester *</label>
+                  <div style="display: flex; gap: 0.5rem;">
+                    <input type="text" id="cfgAcademicYear" class="form-control" value="2025-2026" style="flex: 2;" required />
+                    <select id="cfgSemester" class="form-control" style="flex: 1;">
+                      <option value="6" selected>Sem 6</option>
+                      <option value="7">Sem 7</option>
+                      <option value="8">Sem 8</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Project Session / Cohort Batch</label>
+                  <input type="text" id="cfgSession" class="form-control" value="Spring 2026 (Batch 2023-2027)" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Capstone Subject / Title Scope</label>
+                  <input type="text" id="cfgProjectTitle" class="form-control" value="Major Undergraduate Capstone Evaluation" />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Faculty Supervisor / Internal Guide</label>
+                  <input type="text" id="cfgSupervisor" class="form-control" value="Dr. Rajesh K. Sharma, Professor &amp; Head" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Faculty Evaluator / External Examiner</label>
+                  <input type="text" id="cfgEvaluator" class="form-control" value="Dr. Anjali Gupta, Senior Evaluator" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Submission Deadline *</label>
+                <input type="date" id="cfgDeadline" class="form-control" value="2026-05-15" required />
+              </div>
+
+              <div style="background: var(--bg-surface); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-app); margin: 1.5rem 0;">
+                <h4 style="font-size: 0.95rem; margin-bottom: 0.75rem; color: var(--brand-blue);">Approved Evaluation Rubric (100 Marks Total)</h4>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem;">
+                  <div><label class="form-label">1. Problem Statement</label><input type="number" id="rubricMax1" class="form-control" value="15" min="1" max="50" /></div>
+                  <div><label class="form-label">2. Implementation</label><input type="number" id="rubricMax2" class="form-control" value="25" min="1" max="50" /></div>
+                  <div><label class="form-label">3. Innovation</label><input type="number" id="rubricMax3" class="form-control" value="15" min="1" max="50" /></div>
+                  <div><label class="form-label">4. Documentation</label><input type="number" id="rubricMax4" class="form-control" value="15" min="1" max="50" /></div>
+                  <div><label class="form-label">5. UI/UX Design</label><input type="number" id="rubricMax5" class="form-control" value="10" min="1" max="50" /></div>
+                  <div><label class="form-label">6. Presentation</label><input type="number" id="rubricMax6" class="form-control" value="10" min="1" max="50" /></div>
+                  <div><label class="form-label">7. Completeness</label><input type="number" id="rubricMax7" class="form-control" value="10" min="1" max="50" /></div>
+                </div>
+              </div>
+
+              <div style="display: flex; justify-content: flex-end; gap: 0.75rem;">
+                <button type="submit" class="btn btn-purple" style="padding: 0.75rem 1.75rem;">
+                  <span>💾</span> Save Institution Configuration
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- ====================================================================== -->
+  
+  <!-- ====================================================================== -->
+  <!-- 3b. TEACHER / FACULTY PORTAL (SUPERVISOR & GUIDE WORKSPACE) -->
+  <!-- ====================================================================== -->
+  <div id="viewTeacherPortal" class="view-screen app-shell teacher-shell" style="display: none;">
+    <div class="sidebar-overlay" id="teacherSidebarOverlay" onclick="app.closeSidebar('teacher')"></div>
+
+    <!-- Teacher Sidebar -->
+    <aside class="app-sidebar" id="teacherSidebar">
+      <div class="sidebar-header">
+        <div class="brand-icon" style="background: linear-gradient(135deg, #10B981, #059669);">FAC</div>
+        <div>
+          <div style="font-weight: 800; font-size: 0.95rem;">FACULTY GUIDE</div>
+          <div style="font-size: 0.7rem; color: #10B981;">PROJECT SUPERVISOR</div>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a class="sidebar-nav-item active" data-ttab="tTabDashboard" onclick="app.switchTeacherTab('tTabDashboard')">
+          <span>📊</span> Overview
+        </a>
+        <a class="sidebar-nav-item" data-ttab="tTabStudents" onclick="app.switchTeacherTab('tTabStudents')">
+          <span>👥</span> My Students
+        </a>
+        <a class="sidebar-nav-item" data-ttab="tTabProjects" onclick="app.switchTeacherTab('tTabProjects')">
+          <span>📁</span> Assigned Projects
+        </a>
+        <a class="sidebar-nav-item" data-ttab="tTabPending" onclick="app.switchTeacherTab('tTabPending')">
+          <span>⏳</span> Pending Reviews <span class="badge-counter" id="teacherPendingBadge" style="background: #10B981;">0</span>
+        </a>
+        <a class="sidebar-nav-item" data-ttab="tTabReview" onclick="app.switchTeacherTab('tTabReview')">
+          <span>🔍</span> Under Review
+        </a>
+        <a class="sidebar-nav-item" data-ttab="tTabEvaluation" onclick="app.switchTeacherTab('tTabEvaluation')">
+          <span>★</span> Evaluation &amp; Grading
+        </a>
+        <a class="sidebar-nav-item" data-ttab="tTabNotifs" onclick="app.switchTeacherTab('tTabNotifs')">
+          <span>🔔</span> Notifications
+        </a>
+        <a class="sidebar-nav-item" data-ttab="tTabProfile" onclick="app.switchTeacherTab('tTabProfile')">
+          <span>👤</span> Faculty Profile
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-profile-widget">
+          <div class="user-avatar" id="teacherAvatar">👨‍🏫</div>
+          <div class="user-info-text">
+            <div class="user-name" id="teacherNameDisplay">Dr. Priya Sharma</div>
+            <div class="user-role-label" id="teacherDeptDisplay">Computer Science &amp; Eng</div>
+          </div>
+          <button class="btn-icon" onclick="app.logout()" title="Logout" style="width: 28px; height: 28px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Teacher Main Content -->
+    <main class="app-main" id="teacherMainContent">
+      <header class="app-topbar">
+        <button class="menu-toggle" onclick="app.toggleSidebar('teacher')" aria-label="Toggle Navigation">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="topbar-breadcrumb">
+          <span class="crumb-root">Portal</span>
+          <span class="crumb-sep">/</span>
+          <span class="crumb-current" id="teacherCrumbCurrent">Faculty Guide Workspace</span>
+        </div>
+        <div class="topbar-actions">
+          <button class="btn btn-quiet" onclick="app.switchTeacherTab('tTabPending')">
+            <span>⚡ Review Queue</span>
+          </button>
+          <div class="topbar-user-badge">
+            <span class="status-indicator online"></span>
+            <span style="font-size: 0.8rem; font-weight: 700; color: #10B981;" id="teacherTopbarRole">Faculty Mentor</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="app-content-body">
+        <!-- 1. Teacher Overview Tab -->
+        <div id="tTabDashboard" class="admin-page-panel">
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <div class="kpi-icon" style="background: rgba(16, 185, 129, 0.15); color: #10B981;">👥</div>
+              <div class="kpi-value" id="tKpiStudents">0</div>
+              <div class="kpi-label">Assigned Students</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon" style="background: rgba(56, 189, 248, 0.15); color: var(--brand-blue);">📁</div>
+              <div class="kpi-value" id="tKpiTotalProjects">0</div>
+              <div class="kpi-label">Supervised Projects</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon" style="background: rgba(245, 158, 11, 0.15); color: var(--status-warning);">⏳</div>
+              <div class="kpi-value" id="tKpiPending">0</div>
+              <div class="kpi-label">Pending Verification</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon" style="background: rgba(129, 140, 248, 0.15); color: var(--brand-purple);">🔍</div>
+              <div class="kpi-value" id="tKpiUnderReview">0</div>
+              <div class="kpi-label">Under Active Review</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon" style="background: rgba(34, 197, 94, 0.15); color: var(--status-success);">✓</div>
+              <div class="kpi-value" id="tKpiApproved">0</div>
+              <div class="kpi-label">Approved Milestones</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon" style="background: rgba(168, 85, 247, 0.15); color: #A855F7;">★</div>
+              <div class="kpi-value" id="tKpiGraded">0</div>
+              <div class="kpi-label">Evaluated &amp; Graded</div>
+            </div>
+          </div>
+
+          <!-- Pending Reviews Queue -->
+          <div class="card-panel" style="margin-top: 1.5rem;">
+            <div class="card-panel-header">
+              <div class="card-panel-title"><span>⏳</span> Student Submissions Awaiting Your Review</div>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Project ID</th>
+                    <th>Capstone Title</th>
+                    <th>Assigned Student</th>
+                    <th>Current Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="teacherDashboardQueueTable"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. My Students Tab -->
+        <div id="tTabStudents" class="admin-page-panel" style="display: none;">
+          <div class="card-panel">
+            <div class="card-panel-header">
+              <div class="card-panel-title"><span>👥</span> Supervised Student Roster</div>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Student Name &amp; PRN</th>
+                    <th>Email</th>
+                    <th>Department &amp; Sem</th>
+                    <th>Total Projects</th>
+                    <th>Submission Deadline</th>
+                    <th>Assignment Notes</th>
+                  </tr>
+                </thead>
+                <tbody id="teacherStudentsTable"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Assigned Projects Tab -->
+        <div id="tTabProjects" class="admin-page-panel" style="display: none;">
+          <div class="card-panel">
+            <div class="card-panel-header" style="flex-wrap: wrap; gap: 1rem;">
+              <div class="card-panel-title"><span>📁</span> Assigned Student Capstone Projects</div>
+              <div style="display: flex; gap: 0.5rem;">
+                <select id="teacherStatusFilter" class="form-control" style="width: 170px;" onchange="app.filterTeacherProjects(this.value)">
+                  <option value="all">All Statuses</option>
+                  <option value="Submitted">Submitted</option>
+                  <option value="Under Review">Under Review</option>
+                  <option value="Changes Requested">Changes Requested</option>
+                  <option value="Approved">Approved</option>
+                  <option value="Graded">Graded</option>
+                  <option value="Rejected">Rejected</option>
+                </select>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Capstone Title</th>
+                    <th>Candidate</th>
+                    <th>Status</th>
+                    <th>Score / Grade</th>
+                    <th>Review Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="teacherProjectsTable"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Pending Reviews Tab -->
+        <div id="tTabPending" class="admin-page-panel" style="display: none;">
+          <div class="card-panel">
+            <div class="card-panel-header">
+              <div class="card-panel-title"><span>⏳</span> Action Required: Pending Submissions</div>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Capstone Title</th>
+                    <th>Student</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="teacherPendingReviewsTable"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Under Review Tab -->
+        <div id="tTabReview" class="admin-page-panel" style="display: none;">
+          <div class="card-panel">
+            <div class="card-panel-header">
+              <div class="card-panel-title"><span>🔍</span> Capstones In Active Evaluation</div>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Capstone Title</th>
+                    <th>Student</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="teacherUnderReviewTable"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Evaluation & Grading Tab -->
+        <div id="tTabEvaluation" class="admin-page-panel" style="display: none;">
+          <div class="card-panel">
+            <div class="card-panel-header">
+              <div class="card-panel-title"><span>★</span> Faculty 100-Mark Capstone Rubric Evaluator</div>
+            </div>
+            <div style="padding: 1.5rem;" id="teacherEvaluationContainer">
+              <p style="color: var(--text-muted); font-size: 0.9rem;">
+                Select a capstone project from your assigned projects list to commence 100-mark rubric grading.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Notifications Tab -->
+        <div id="tTabNotifs" class="admin-page-panel" style="display: none;">
+          <div class="card-panel">
+            <div class="card-panel-header">
+              <div class="card-panel-title"><span>🔔</span> Faculty Activity &amp; Submissions Feed</div>
+            </div>
+            <div id="teacherNotifsList" style="padding: 1rem;"></div>
+          </div>
+        </div>
+
+        <!-- 8. Profile Tab -->
+        <div id="tTabProfile" class="admin-page-panel" style="display: none;">
+          <div class="card-panel" style="max-width: 700px; margin: 0 auto;">
+            <div class="card-panel-header">
+              <div class="card-panel-title"><span>👤</span> Faculty Profile &amp; Credentials</div>
+            </div>
+            <div style="padding: 2rem;" id="teacherProfileCard"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- 4. MODALS (AUTHENTICATION, REVIEW & DOSSIER) -->
+  <!-- ====================================================================== -->
+
+  <!-- Student Auth Modal (Login / Register) -->
+  <div class="modal-overlay" id="studentAuthModal">
+    <div class="modal-box" style="max-width: 540px;">
+      <div class="modal-header">
+        <h3 class="modal-title" id="studentAuthTitle">Student Portal Login</h3>
+        <button class="modal-close" onclick="app.closeModals()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <!-- Student Login View -->
+        <div id="studentLoginBox">
+          <form onsubmit="event.preventDefault(); app.handleStudentLogin();">
+            <div class="form-group">
+              <label class="form-label">College Email Address *</label>
+              <input type="email" id="sLoginEmail" class="form-control" placeholder="aarav.patel@student.univ.edu" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Password *</label>
+              <input type="password" id="sLoginPassword" class="form-control" placeholder="••••••••" required />
+            </div>
+            <div style="margin-bottom: 1.25rem;">
+              <button type="button" class="btn btn-quiet" style="font-size: 0.75rem; padding: 4px 10px;" onclick="app.fillDemoStudentCreds()">
+                ⚡ Quick Fill Demo: Aarav Patel (21CS042)
+              </button>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">
+              Sign In to Student Workspace &rarr;
+            </button>
+          </form>
+
+          <div style="text-align: center; margin-top: 1.25rem; font-size: 0.8rem; color: var(--text-muted);">
+            Don't have an account? <a href="javascript:void(0)" onclick="app.toggleStudentAuthTab('register')" style="color: var(--brand-blue); font-weight: 700;">Register as Student</a>
+          </div>
+        </div>
+
+        <!-- Student Register View -->
+        <div id="studentRegisterBox" style="display: none;">
+          <form onsubmit="event.preventDefault(); app.handleStudentRegister();">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Full Name *</label>
+                <input type="text" id="sRegName" class="form-control" placeholder="e.g. Pooja Mehta" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Enrollment / PRN *</label>
+                <input type="text" id="sRegEnr" class="form-control" placeholder="e.g. 21CS099" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">College Email Address *</label>
+              <input type="email" id="sRegEmail" class="form-control" placeholder="pooja.mehta@student.univ.edu" required />
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Password *</label>
+                <input type="password" id="sRegPassword" class="form-control" placeholder="••••••••" minlength="6" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Confirm Password *</label>
+                <input type="password" id="sRegConfirmPassword" class="form-control" placeholder="••••••••" minlength="6" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Department *</label>
+                <select id="sRegDept" class="form-control" required>
+                  <option value="Computer Science &amp; Engineering">Computer Science &amp; Engineering</option>
+                  <option value="Information Technology">Information Technology</option>
+                  <option value="Electronics &amp; Communication">Electronics &amp; Communication</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Branch *</label>
+                <input type="text" id="sRegBranch" class="form-control" placeholder="e.g. Systems &amp; Architecture" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Current Semester *</label>
+              <select id="sRegSemester" class="form-control" required>
+                <option value="6">Semester 6</option>
+                <option value="7">Semester 7</option>
+                <option value="8">Semester 8</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%;">
+              Complete Registration &rarr;
+            </button>
+          </form>
+
+          <div style="text-align: center; margin-top: 1.25rem; font-size: 0.8rem; color: var(--text-muted);">
+            Already have an account? <a href="javascript:void(0)" onclick="app.toggleStudentAuthTab('login')" style="color: var(--brand-blue); font-weight: 700;">Sign in here</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Auth Modal -->
+  <div class="modal-overlay" id="adminAuthModal">
+    <div class="modal-box" style="max-width: 480px;">
+      <div class="modal-header">
+        <h3 class="modal-title">Faculty &amp; Admin Sign In</h3>
+        <button class="modal-close" onclick="app.closeModals()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div style="background: rgba(129, 140, 248, 0.1); border: 1px solid rgba(129, 140, 248, 0.3); border-radius: var(--radius-md); padding: 0.75rem 1rem; font-size: 0.8rem; color: var(--brand-purple); margin-bottom: 1.25rem;">
+          🛡️ Authorized faculty access only. Public registration is disabled.
+        </div>
+
+        <form onsubmit="event.preventDefault(); app.handleAdminLogin();">
+          <div class="form-group">
+            <label class="form-label">Administrator Email *</label>
+            <input type="email" id="aLoginEmail" class="form-control" placeholder="admin@univ.edu" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Master Password *</label>
+            <input type="password" id="aLoginPassword" class="form-control" placeholder="••••••••" required />
+          </div>
+          <div style="margin-bottom: 1.25rem;">
+            <button type="button" class="btn btn-quiet" style="font-size: 0.75rem; padding: 4px 10px;" onclick="app.fillDemoAdminCreds()">
+              ⚡ Quick Fill Admin: admin@univ.edu
+            </button>
+          </div>
+          <button type="submit" class="btn btn-purple" style="width: 100%;">
+            Enter Faculty Command Center &rarr;
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Project Review Modal -->
+  <div class="modal-overlay" id="adminReviewModal">
+    <div class="modal-box modal-large">
+      <div class="modal-header">
+        <h3 class="modal-title" id="revModalTitle">Capstone Project Verification</h3>
+        <button class="modal-close" onclick="app.closeModals()">&times;</button>
+      </div>
+      <div class="modal-body" id="adminReviewModalContent">
+        <!-- Dynamically injected -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Printable Official University Marks Dossier Modal -->
+  <div class="modal-overlay" id="dossierModal">
+    <div class="modal-box modal-large">
+      <div class="modal-header">
+        <h3 class="modal-title">Official University Marks Dossier</h3>
+        <button class="modal-close" onclick="app.closeModals()">&times;</button>
+      </div>
+      <div class="modal-body" id="printableDossierContent">
+        <div class="dossier-header">
+          <div class="dossier-univ-name">DEPARTMENT OF COMPUTER SCIENCE &amp; ENGINEERING</div>
+          <div class="dossier-course-title">COMPUTER ORGANIZATION, ARCHITECTURE &amp; PARALLEL SYSTEMS</div>
+          <div class="dossier-sub-title">Final Capstone Project Evaluation &bull; Form APTS-COA-2026</div>
+        </div>
+
+        <div class="dossier-meta-grid">
+          <div><strong>Project ID:</strong> <span id="dosId">PRJ-2026-002</span></div>
+          <div><strong>Academic Batch:</strong> <span id="dosBatch">2023-2027 CSE (Term VI)</span></div>
+          <div><strong>Project Title:</strong> <span id="dosTitle">Scalable CC-NUMA Shared Memory System</span></div>
+          <div><strong>Faculty Guide:</strong> <span id="dosGuide">Dr. V. K. Sharma</span></div>
+          <div><strong>Candidate:</strong> <span id="dosLead">Sneha Nair (21CS089)</span></div>
+          <div><strong>Team Members:</strong> <span id="dosMembers">Rohan Das</span></div>
+        </div>
+
+        <table class="dossier-marks-table">
+          <thead>
+            <tr>
+              <th>Evaluation Criterion (Approved Academic Rubric)</th>
+              <th style="text-align: center; width: 120px;">Max Marks</th>
+              <th style="text-align: center; width: 120px;">Awarded</th>
+              <th>Evaluation Remarks</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>1. Problem Statement &amp; Theoretical Specification</strong></td>
+              <td style="text-align: center;">15</td>
+              <td style="text-align: center; font-weight: 700;">15.0</td>
+              <td>Clear architectural justification of CC-NUMA directory scaling.</td>
+            </tr>
+            <tr>
+              <td><strong>2. Implementation &amp; Micro-Architecture Synthesis</strong></td>
+              <td style="text-align: center;">25</td>
+              <td style="text-align: center; font-weight: 700;">24.5</td>
+              <td>Exemplary directory bitmask synchronization matching SGI Origin.</td>
+            </tr>
+            <tr>
+              <td><strong>3. Innovation &amp; Hardware Optimization</strong></td>
+              <td style="text-align: center;">15</td>
+              <td style="text-align: center; font-weight: 700;">14.5</td>
+              <td>Low-latency 2D Torus wormhole routing with deadlock prevention.</td>
+            </tr>
+            <tr>
+              <td><strong>4. Documentation &amp; Verification Logs</strong></td>
+              <td style="text-align: center;">15</td>
+              <td style="text-align: center; font-weight: 700;">14.0</td>
+              <td>Cycle-accurate Gem5 / Verilator testbench simulation waveforms.</td>
+            </tr>
+            <tr>
+              <td><strong>5. UI / UX &amp; Diagnostic Visualization</strong></td>
+              <td style="text-align: center;">10</td>
+              <td style="text-align: center; font-weight: 700;">9.5</td>
+              <td>Clear interconnect topology latency telemetry display.</td>
+            </tr>
+            <tr>
+              <td><strong>6. Oral Viva Voce &amp; Theoretical Defense</strong></td>
+              <td style="text-align: center;">10</td>
+              <td style="text-align: center; font-weight: 700;">9.5</td>
+              <td>Robust defense of sequential consistency and LL-SC barriers.</td>
+            </tr>
+            <tr>
+              <td><strong>7. Project Completeness &amp; Deliverables</strong></td>
+              <td style="text-align: center;">10</td>
+              <td style="text-align: center; font-weight: 700;">9.5</td>
+              <td>All milestones and artifact repositories completed.</td>
+            </tr>
+            <tr class="dossier-total-row">
+              <td><strong>AGGREGATE MARKS &amp; ACCREDITATION</strong></td>
+              <td style="text-align: center;"><strong>100</strong></td>
+              <td style="text-align: center; font-size: 1.15rem; color: #0284c7;"><strong>96.5</strong></td>
+              <td><strong>GRADE A+ (HONORS)</strong></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="dossier-signatures">
+          <div class="signature-box"><div class="signature-line"></div><div class="sig-name">Internal Faculty Guide</div><div class="sig-sub">Dr. Rajesh K. Sharma &bull; Professor</div></div>
+          <div class="signature-box"><div class="signature-line"></div><div class="sig-name">External Examiner</div><div class="sig-sub">Dr. Anjali Gupta &bull; External Evaluator</div></div>
+          <div class="signature-box"><div class="signature-line"></div><div class="sig-name">Head of Department</div><div class="sig-sub">Academic Review Committee</div></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-quiet" onclick="app.closeModals()">Close</button>
+        <button class="btn btn-primary" onclick="window.print()">🖨️ Print / Save PDF</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Student Project Resubmission Modal (Revision Provenance) -->
+  <div class="modal-overlay" id="studentResubmitModal">
+    <div class="modal-box modal-large">
+      <div class="modal-header">
+        <h3 class="modal-title" id="resubModalTitle">Submit Improved Revision</h3>
+        <button class="modal-close" onclick="app.closeModals()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="projectResubmitForm" onsubmit="event.preventDefault(); app.handleProjectResubmit();">
+          <input type="hidden" id="resubProjectId" />
+          
+          <div class="form-group" style="background: rgba(239, 68, 68, 0.08); padding: 1rem; border-radius: var(--radius-md); border: 1px solid rgba(239, 68, 68, 0.25);">
+            <label class="form-label" style="color: var(--accent-rose); font-weight: 700;">Revision Changelog &amp; Improvements Made *</label>
+            <textarea id="resubChangelog" class="form-control" rows="3" placeholder="Explicitly describe how you addressed the faculty feedback in this revision (e.g. Added testbench waveforms, fixed hazard stalls, updated documentation)..." required></textarea>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Project Title *</label>
+              <input type="text" id="resubTitle" class="form-control" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Category</label>
+              <input type="text" id="resubCategory" class="form-control" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Updated Abstract</label>
+            <textarea id="resubAbstract" class="form-control" rows="3"></textarea>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">GitHub Repository URL</label>
+              <input type="url" id="resubRepo" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Live Demonstration URL</label>
+              <input type="url" id="resubLive" class="form-control" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">New / Revised Documentation PDF</label>
+              <input type="file" id="resubDocFile" class="form-control" accept=".pdf,.doc,.docx" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">New / Revised Presentation PPT</label>
+              <input type="file" id="resubPresFile" class="form-control" accept=".ppt,.pptx,.pdf" />
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+            <button type="button" class="btn btn-quiet" onclick="app.closeModals()">Cancel</button>
+            <button type="submit" class="btn btn-purple">
+              <span>↺</span> Submit Revision to Faculty Queue
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Faculty Written Feedback / Action Modal (Replaces Browser Prompt/Alert) -->
+  <div class="modal-overlay" id="adminActionPromptModal">
+    <div class="modal-box" style="max-width: 520px;">
+      <div class="modal-header">
+        <h3 class="modal-title" id="actionPromptTitle">Faculty Decision Rationale</h3>
+        <button class="modal-close" onclick="app.closeModals()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p id="actionPromptDesc" style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1rem;">
+          Please enter detailed written commentary explaining the reason for this action.
+        </p>
+        <form onsubmit="event.preventDefault(); app.submitAdminActionPrompt();">
+          <input type="hidden" id="actionPromptProjectId" />
+          <input type="hidden" id="actionPromptStatus" />
+          
+          <div class="form-group">
+            <label class="form-label" id="actionPromptLabel">Written Notes / Rationale *</label>
+            <textarea id="actionPromptNotes" class="form-control" rows="4" placeholder="Enter constructive feedback, weaknesses, or specific revision guidelines..." required></textarea>
+          </div>
+
+          <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.25rem;">
+            <button type="button" class="btn btn-quiet" onclick="app.closeModals()">Cancel</button>
+            <button type="submit" class="btn btn-primary" id="actionPromptSubmitBtn">Confirm &amp; Notify Candidate</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- JavaScript Modules -->
+  <script src="app.js"></script>
+
+  <!-- Teacher Auth Modal -->
+  <div class="modal-overlay" id="teacherAuthModal">
+    <div class="modal-box" style="max-width: 480px;">
+      <div class="modal-header">
+        <h3 class="modal-title" style="color: #10B981;">👨‍🏫 Teacher / Guide Sign In</h3>
+        <button class="modal-close" onclick="app.closeModals()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: var(--radius-md); padding: 0.75rem 1rem; font-size: 0.8rem; color: #10B981; margin-bottom: 1.25rem;">
+          👨‍🏫 Authorized faculty accounts only. Accounts are created by the Department Administrator.
+        </div>
+
+        <form onsubmit="event.preventDefault(); app.handleTeacherLogin();">
+          <div class="form-group">
+            <label class="form-label">Faculty College Email *</label>
+            <input type="email" id="tLoginEmail" class="form-control" placeholder="teacher@univ.edu" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Password *</label>
+            <input type="password" id="tLoginPassword" class="form-control" placeholder="••••••••" required />
+          </div>
+          <div style="margin-bottom: 1.25rem;">
+            <button type="button" class="btn btn-quiet" style="font-size: 0.75rem; padding: 4px 10px;" onclick="app.fillDemoTeacherCreds()">
+              ⚡ Quick Fill Teacher: teacher@univ.edu
+            </button>
+          </div>
+          <button type="submit" class="btn btn-quiet" style="width: 100%; border-color: rgba(16, 185, 129, 0.5); color: #10B981; font-weight: 700; background: rgba(16, 185, 129, 0.1);">
+            Enter Faculty Workspace &rarr;
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Add Student Modal -->
+  <div class="modal-overlay" id="adminAddStudentModal">
+    <div class="modal-box" style="max-width: 600px;">
+      <div class="modal-header">
+        <h3 class="modal-title">➕ Add New Student Account</h3>
+        <button class="modal-close" onclick="app.closeModals()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form onsubmit="event.preventDefault(); app.handleAdminAddStudent();">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Full Name *</label>
+              <input type="text" id="mStudentName" class="form-control" placeholder="e.g. Rahul Verma" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Enrollment / PRN *</label>
+              <input type="text" id="mStudentEnr" class="form-control" placeholder="e.g. 21CS105" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">College Email Address *</label>
+              <input type="email" id="mStudentEmail" class="form-control" placeholder="rahul.verma@student.univ.edu" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone Number</label>
+              <input type="text" id="mStudentPhone" class="form-control" placeholder="9876543210" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Department *</label>
+              <select id="mStudentDept" class="form-control" required>
+                <option value="Computer Science & Engineering">Computer Science &amp; Engineering</option>
+                <option value="Information Technology">Information Technology</option>
+                <option value="Electronics & Communication">Electronics &amp; Communication</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Branch *</label>
+              <input type="text" id="mStudentBranch" class="form-control" placeholder="e.g. Machine Learning" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Semester *</label>
+              <select id="mStudentSemester" class="form-control" required>
+                <option value="6">Semester 6</option>
+                <option value="7">Semester 7</option>
+                <option value="8">Semester 8</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Section</label>
+              <input type="text" id="mStudentSection" class="form-control" placeholder="Section A" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Temporary Password *</label>
+            <input type="text" id="mStudentTempPassword" class="form-control" value="Student@2026!" required />
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">
+            Create Student Account &rarr;
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Add Teacher Modal -->
+  <div class="modal-overlay" id="adminAddTeacherModal">
+    <div class="modal-box" style="max-width: 600px;">
+      <div class="modal-header">
+        <h3 class="modal-title" style="color: var(--brand-purple);">➕ Add New Faculty / Teacher Account</h3>
+        <button class="modal-close" onclick="app.closeModals()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form onsubmit="event.preventDefault(); app.handleAdminAddTeacher();">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Faculty Full Name *</label>
+              <input type="text" id="mTeacherName" class="form-control" placeholder="e.g. Dr. Ramesh Kumar" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Faculty ID *</label>
+              <input type="text" id="mTeacherFacId" class="form-control" placeholder="e.g. FAC-2026-003" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Official Email Address *</label>
+              <input type="email" id="mTeacherEmail" class="form-control" placeholder="ramesh.kumar@univ.edu" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone Number</label>
+              <input type="text" id="mTeacherPhone" class="form-control" placeholder="9876543210" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Department *</label>
+              <select id="mTeacherDept" class="form-control" required>
+                <option value="Computer Science & Engineering">Computer Science &amp; Engineering</option>
+                <option value="Information Technology">Information Technology</option>
+                <option value="Electronics & Communication">Electronics &amp; Communication</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Designation *</label>
+              <select id="mTeacherDesignation" class="form-control" required>
+                <option value="Assistant Professor">Assistant Professor</option>
+                <option value="Associate Professor">Associate Professor</option>
+                <option value="Professor">Professor</option>
+                <option value="HOD">Head of Department</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Specialization / Research Area</label>
+            <input type="text" id="mTeacherSpec" class="form-control" placeholder="e.g. Cloud Computing, Micro-Architectures" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Temporary Password *</label>
+            <input type="text" id="mTeacherTempPassword" class="form-control" value="Teacher@2026!" required />
+          </div>
+
+          <button type="submit" class="btn btn-purple" style="width: 100%; margin-top: 0.5rem;">
+            Create Faculty Account &rarr;
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Assign Teacher to Student Modal -->
+  <div class="modal-overlay" id="adminAssignModal">
+    <div class="modal-box" style="max-width: 550px;">
+      <div class="modal-header">
+        <h3 class="modal-title">🔗 Assign Faculty Guide to Student</h3>
+        <button class="modal-close" onclick="app.closeModals()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form onsubmit="event.preventDefault(); app.handleAdminSaveAssignment();">
+          <div class="form-group">
+            <label class="form-label">Select Faculty Guide *</label>
+            <select id="mAssignTeacherSelect" class="form-control" required></select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Select Student *</label>
+            <select id="mAssignStudentSelect" class="form-control" required onchange="app.onAssignStudentChanged(this.value)"></select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Associate with Capstone Project (Optional)</label>
+            <select id="mAssignProjectSelect" class="form-control">
+              <option value="">-- No Specific Project / All Projects --</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Milestone / Submission Deadline</label>
+            <input type="date" id="mAssignDeadline" class="form-control" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Supervision Directives &amp; Notes</label>
+            <textarea id="mAssignNotes" class="form-control" rows="3" placeholder="e.g. Guide for Major Capstone v1 specification &amp; hardware validation."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">
+            Confirm Guide Assignment &rarr;
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Reset Password Modal -->
+  <div class="modal-overlay" id="adminResetPasswordModal">
+    <div class="modal-box" style="max-width: 440px;">
+      <div class="modal-header">
+        <h3 class="modal-title">🔑 Reset Account Password</h3>
+        <button class="modal-close" onclick="app.closeModals()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form onsubmit="event.preventDefault(); app.handleAdminSubmitResetPassword();">
+          <input type="hidden" id="mResetUserId" />
+          <input type="hidden" id="mResetUserType" />
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;" id="mResetUserLabel">
+            Reset password for account.
+          </p>
+          <div class="form-group">
+            <label class="form-label">New Password *</label>
+            <input type="text" id="mResetNewPassword" class="form-control" value="Reset@2026!" minlength="6" required />
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">
+            Set New Password &amp; Invalidate Sessions &rarr;
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Teacher Action Prompt Modal (Inline Non-Blocking Modal for Feedback) -->
+  <div class="modal-overlay" id="teacherActionPromptModal">
+    <div class="modal-box" style="max-width: 520px;">
+      <div class="modal-header">
+        <h3 class="modal-title" id="teacherActionPromptTitle" style="color: #10B981;">Faculty Review Action</h3>
+        <button class="modal-close" onclick="app.closeModals()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p id="teacherActionPromptSubtitle" style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+          Provide written guidance for the student.
+        </p>
+        <div class="form-group">
+          <label class="form-label" id="teacherActionPromptLabel">Faculty Directive / Feedback *</label>
+          <textarea id="teacherActionPromptNotes" class="form-control" rows="4" placeholder="Enter your detailed feedback and required revisions..."></textarea>
+        </div>
+        <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.25rem;">
+          <button type="button" class="btn btn-quiet" onclick="app.closeModals()">Cancel</button>
+          <button type="button" class="btn btn-primary" id="teacherActionPromptSubmitBtn" onclick="app.submitTeacherActionPrompt()">
+            Submit Action &rarr;
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
