@@ -22,8 +22,19 @@ import io
 
 PORT = 3000
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DB_FILE = os.path.join(BASE_DIR, "portal.db")
-UPLOAD_DIR = os.path.join(BASE_DIR, "uploads")
+
+# Vercel Serverless compatibility: use /tmp for writable SQLite and uploads
+if os.environ.get("VERCEL"):
+    DB_FILE = "/tmp/portal.db"
+    UPLOAD_DIR = "/tmp/uploads"
+    if not os.path.exists(DB_FILE):
+        src_db = os.path.join(BASE_DIR, "portal.db")
+        if os.path.exists(src_db):
+            import shutil
+            shutil.copyfile(src_db, DB_FILE)
+else:
+    DB_FILE = os.path.join(BASE_DIR, "portal.db")
+    UPLOAD_DIR = os.path.join(BASE_DIR, "uploads")
 
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
